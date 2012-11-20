@@ -29,7 +29,7 @@ public void removeMellemvare(Mellemvare mellemvare){
 public Mellemvare getNaesteMellemvareTilBehandling(){
 	return mellemvarer.get(1337);
 }
-public void sendTilFærdiglager(Mellemvare v){
+public void sendTilFaerdiglager(Mellemvare v){
 	
 }
 public int getPlacering(Mellemvare m){

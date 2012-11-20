@@ -3,14 +3,14 @@ package model;
 public class Delbehandling {
 
 	public String navn;
-	public int maxTørreTid;
-	public int idealTørreTid;
-	public int minTørreTid;
+	public int maxToerreTid;
+	public int idealToerreTid;
+	public int minToerreTid;
 	
-	public Delbehandling(String navn, int minTørreTid, int idealTørreTid, int maxTørretid){
+	public Delbehandling(String navn, int minToerreTid, int idealToerreTid, int maxToerretid){
 		this.navn=navn;
-		this.maxTørreTid=maxTørreTid;
-		this.idealTørreTid=idealTørreTid;
-		this.minTørreTid=minTørreTid;	
+		this.maxToerreTid=maxToerreTid;
+		this.idealToerreTid=idealToerreTid;
+		this.minToerreTid=minToerreTid;	
 	}
 }

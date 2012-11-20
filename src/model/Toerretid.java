@@ -1,11 +1,11 @@
 package model;
 
-public class Tørretid {
+public class Toerretid {
 	private String tid;
 	private Delbehandling delbehandling = null;
 	
 	
-	Tørretid(String tid, Delbehandling delbehandling){
+	Toerretid(String tid, Delbehandling delbehandling){
 		this.setTid(tid);
 		this.delbehandling=delbehandling;
 		

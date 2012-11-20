@@ -7,7 +7,7 @@ public class Mellemvare {
 
 	private String id;
 	private Produkttype produkttype =null;
-	private List<Tørretid> tørretider = new ArrayList<Tørretid>();
+	private List<Toerretid> toerretider = new ArrayList<Toerretid>();
 	public Mellemvare(String id, Produkttype produkttype){
 		this.produkttype=produkttype;
 		this.setId(id);
@@ -21,27 +21,27 @@ public class Mellemvare {
 			this.produkttype=produkttype;
 		}
 	}
-	public ArrayList<Tørretid> getTørretider(){
-		return new ArrayList<Tørretid>(tørretider);
+	public ArrayList<Toerretid> getToerretider(){
+		return new ArrayList<Toerretid>(toerretider);
 	}
-	public Tørretid createTørretid(String tid) throws RuntimeException{
-		Delbehandling delbehandling = getNæsteDelbehandling();
+	public Toerretid createToerretid(String tid) throws RuntimeException{
+		Delbehandling delbehandling = getNaesteDelbehandling();
 		if (delbehandling == null) throw new RuntimeException("ikke flere delbehandlinger");
-		Tørretid tørretid = new Tørretid(tid, delbehandling);
-		tørretider.add(tørretid);
-		return tørretid;
+		Toerretid toerretid = new Toerretid(tid, delbehandling);
+		toerretider.add(toerretid);
+		return toerretid;
 	}
-	public void deleteTørretid(Tørretid tørretid){
-		if(tørretider.contains(tørretid)){
-			tørretider.remove(tørretid);
+	public void deleteToerretid(Toerretid toerretid){
+		if(toerretider.contains(toerretid)){
+			toerretider.remove(toerretid);
 		}
 	}
-	public Delbehandling getNæsteDelbehandling(){
+	public Delbehandling getNaesteDelbehandling(){
 		int antalDelbehandlinger = getProdukttype().getBehandling().getDelbehandlinger().size();
-		int antalTørretider = tørretider.size();
+		int antalToerretider = toerretider.size();
 		Delbehandling delbehandling = null;
-		if( antalDelbehandlinger >= antalTørretider + 1){
-			delbehandling = getProdukttype().getBehandling().getDelbehandlinger().get(antalTørretider);
+		if( antalDelbehandlinger >= antalToerretider + 1){
+			delbehandling = getProdukttype().getBehandling().getDelbehandlinger().get(antalToerretider);
 		}
 		return delbehandling;
 	}

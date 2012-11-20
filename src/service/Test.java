@@ -23,18 +23,18 @@ public class Test {
 		Mellemvare m1 = new Mellemvare("007",p1);
 		Mellemvarelager ml1 = new Mellemvarelager("Lager of d00m");
 		
-		m1.createTørretid("Idag");
-		m1.createTørretid("iMorgen");
+		m1.createToerretid("Idag");
+		m1.createToerretid("iMorgen");
 		
 		
 		ml1.addMellemvare(m1);
 		
 		System.out.println(m1.getId());
-		System.out.println(m1.getTørretider().size());
+		System.out.println(m1.getToerretider().size());
 		System.out.println(m1.getProdukttype().getBehandling().getDelbehandlinger().size());
-		System.out.println(m1.getTørretider().toString());
+		System.out.println(m1.getToerretider().toString());
 		
-	//	m1.createTørretid("ifremtiden");
+	//	m1.createToerretid("ifremtiden");
 		
 
 

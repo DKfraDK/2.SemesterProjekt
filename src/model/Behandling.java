@@ -13,10 +13,10 @@ public class Behandling {
 
 	}
 
-	public Delbehandling createDelbehandling(String navn, int Tørretid,
-			int idealTørreTid, int minTørretid) {
-		Delbehandling delbehandling = new Delbehandling(navn, Tørretid,
-				idealTørreTid, minTørretid);
+	public Delbehandling createDelbehandling(String navn, int Toerretid,
+			int idealToerreTid, int minToerretid) {
+		Delbehandling delbehandling = new Delbehandling(navn, Toerretid,
+				idealToerreTid, minToerretid);
 		delbehandlinger.add(delbehandling);
 		return delbehandling;
 	}
