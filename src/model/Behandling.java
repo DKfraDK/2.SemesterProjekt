@@ -7,7 +7,6 @@ public class Behandling {
 
 	private String navn;
 	private List<Delbehandling> delbehandlinger = new ArrayList<Delbehandling>();
-
 	public Behandling(String navn) {
 		this.navn = navn;
 
