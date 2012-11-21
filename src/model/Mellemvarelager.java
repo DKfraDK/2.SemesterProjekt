@@ -16,12 +16,12 @@ public class Mellemvarelager {
 	
 	public Mellemvare getNaesteMellemvareTilBehandling(){
 		Mellemvare resultMellemvare = null;
-		int max = mellemvarer.get(0).getProdukttype().getBehandling().getDelbehandlinger().get(mellemvarer.get(0).getProdukttype().getBehandling().getDelbehandlinger().size()-1).getMaxToerreTid();
-		int min = mellemvarer.get(0).getProdukttype().getBehandling().getDelbehandlinger().get(mellemvarer.get(0).getProdukttype().getBehandling().getDelbehandlinger().size()-1).getMinToerreTid();
-		int ideal = mellemvarer.get(0).getProdukttype().getBehandling().getDelbehandlinger().get(mellemvarer.get(0).getProdukttype().getBehandling().getDelbehandlinger().size()-1).getIdealToerreTid();
+		int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
+		int min = mellemvarer.get(0).getSidsteDelbehandling().getMinToerreTid();
+		int ideal = mellemvarer.get(0).getSidsteDelbehandling().getIdealToerreTid();
 		
 		for(Mellemvare m : mellemvarer){
-			Delbehandling d = m.getProdukttype().getBehandling().getDelbehandlinger().get(m.getProdukttype().getBehandling().getDelbehandlinger().size()-1);
+			Delbehandling d = m.getSidsteDelbehandling();
 			int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
 			System.out.println(antalDagePaaLager);
 			System.out.println(d.getMaxToerreTid());
@@ -31,23 +31,23 @@ public class Mellemvarelager {
 		}
 		if(resultMellemvare == null){
 			for(Mellemvare m : mellemvarer){
-				for(Delbehandling d : m.getProdukttype().getBehandling().getDelbehandlinger()){
-					int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
-					if(d.getIdealToerreTid() >= ideal && d.getIdealToerreTid() >= antalDagePaaLager){
-						resultMellemvare = m;
-					}
+				Delbehandling d = m.getSidsteDelbehandling();
+				int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
+				if(d.getIdealToerreTid() >= ideal && d.getIdealToerreTid() >= antalDagePaaLager){
+					resultMellemvare = m;
 				}
+			
 			}
 		}
 		if(resultMellemvare == null){
 			for(Mellemvare m : mellemvarer){
-				for(Delbehandling d : m.getProdukttype().getBehandling().getDelbehandlinger()){
-					int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
-					if(d.getMinToerreTid() >= min && d.getMinToerreTid() >= antalDagePaaLager){
-						resultMellemvare = m;
-					}
+				Delbehandling d = m.getSidsteDelbehandling();
+				int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
+				if(d.getMinToerreTid() >= min && d.getMinToerreTid() >= antalDagePaaLager){
+					resultMellemvare = m;
 				}
 			}
+			
 		}
 		
 		return resultMellemvare;

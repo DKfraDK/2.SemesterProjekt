@@ -53,7 +53,11 @@ public class Mellemvare {
 		this.id = id;
 	}
 	
+	public Delbehandling getSidsteDelbehandling(){
+		 return getProdukttype().getBehandling().getDelbehandlinger().get(getProdukttype().getBehandling().getDelbehandlinger().size()-1);
+	}
+	
 	public String toString(){
-		return id;
+		return "id: " + id + ", " + getProdukttype();
 	}
 }

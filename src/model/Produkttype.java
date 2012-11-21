@@ -19,4 +19,8 @@ public class Produkttype {
 			this.behandling=behandling;
 		}
 	}
+	
+	public String toString(){
+		return navn;
+	}
 }
