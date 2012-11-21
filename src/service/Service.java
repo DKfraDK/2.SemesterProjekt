@@ -9,4 +9,8 @@ public class Service {
 	public void createSomeObjects(){
 		
 	}
+	
+	public void opretMellemvare(){
+		
+	}
 }

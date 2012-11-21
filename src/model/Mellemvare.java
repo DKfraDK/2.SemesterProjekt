@@ -8,6 +8,7 @@ public class Mellemvare {
 	private String id;
 	private Produkttype produkttype =null;
 	private List<Toerretid> toerretider = new ArrayList<Toerretid>();
+	
 	public Mellemvare(String id, Produkttype produkttype){
 		this.produkttype=produkttype;
 		this.setId(id);
@@ -24,7 +25,7 @@ public class Mellemvare {
 	public ArrayList<Toerretid> getToerretider(){
 		return new ArrayList<Toerretid>(toerretider);
 	}
-	public Toerretid createToerretid(String tid) throws RuntimeException{
+	public Toerretid createToerretid(int tid) throws RuntimeException{
 		Delbehandling delbehandling = getNaesteDelbehandling();
 		if (delbehandling == null) throw new RuntimeException("ikke flere delbehandlinger");
 		Toerretid toerretid = new Toerretid(tid, delbehandling);
@@ -50,5 +51,9 @@ public class Mellemvare {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String toString(){
+		return id;
 	}
 }

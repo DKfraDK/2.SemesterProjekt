@@ -1,11 +1,11 @@
 package model;
 
 public class Toerretid {
-	private String tid;
+	private int tid;
 	private Delbehandling delbehandling = null;
 	
 	
-	Toerretid(String tid, Delbehandling delbehandling){
+	Toerretid(int tid, Delbehandling delbehandling){
 		this.setTid(tid);
 		this.delbehandling=delbehandling;
 		
@@ -20,11 +20,11 @@ public class Toerretid {
 		}
 	}
 
-	public String getTid() {
+	public int getTid() {
 		return tid;
 	}
 
-	public void setTid(String tid) {
+	public void setTid(int tid) {
 		this.tid = tid;
 	}
 
