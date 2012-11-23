@@ -10,6 +10,9 @@ public class Produkttype {
 		this.navn=navn;
 		
 	}
+	public void setNavn(String navn){
+		this.navn=navn;
+	}
 	public Behandling getBehandling(){
 		return behandling;
 	}
@@ -19,6 +22,7 @@ public class Produkttype {
 			this.behandling=behandling;
 		}
 	}
+	
 	
 	public String toString(){
 		return navn;
