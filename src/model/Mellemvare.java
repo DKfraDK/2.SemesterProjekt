@@ -9,9 +9,10 @@ public class Mellemvare {
 	private Produkttype produkttype =null;
 	private List<Toerretid> toerretider = new ArrayList<Toerretid>();
 	
-	public Mellemvare(String id, Produkttype produkttype){
+	public Mellemvare(String id, Produkttype produkttype, int tid){
 		this.produkttype=produkttype;
 		this.setId(id);
+		createToerretid(tid);
 	}
 	public Produkttype getProdukttype(){
 		return produkttype;

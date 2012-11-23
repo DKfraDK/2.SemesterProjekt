@@ -27,5 +27,9 @@ public class Toerretid {
 	public void setTid(int tid) {
 		this.tid = tid;
 	}
+	
+	public String toString(){
+		return delbehandling + " begyndt dag: " + tid;
+	}
 
 }
