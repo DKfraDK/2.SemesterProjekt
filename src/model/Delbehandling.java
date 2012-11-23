@@ -46,5 +46,9 @@ public class Delbehandling {
 	public void setMinToerreTid(int minToerreTid) {
 		this.minToerreTid = minToerreTid;
 	}
+	
+	public String toString(){
+		return navn;
+	}
 
 }

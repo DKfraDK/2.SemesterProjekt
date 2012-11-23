@@ -15,33 +15,53 @@ public class Mellemvarelager {
 
 	}
 	
+	public ArrayList<Mellemvare> getFaerdigeMellemvarer(){
+		return new ArrayList<Mellemvare>(faerdigeMellemvarer);
+	}
+	
 	public Mellemvare getNaesteMellemvareTilBehandling(){
 		Mellemvare resultMellemvare = null;
 		//Den maximum tørretid for den sidste delbehandling af den første mellemvare
 		int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
 		int min = mellemvarer.get(0).getSidsteDelbehandling().getMinToerreTid();
 		int ideal = mellemvarer.get(0).getSidsteDelbehandling().getIdealToerreTid();
-		
+		boolean isFaerdig = false;
 		for(Mellemvare m : mellemvarer){
 			Delbehandling d = m.getNaesteDelbehandling();
 			//Udregner hvor mange dage den givne mellemvare har vaeret på lageret i DEN delbehandling
-			int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
-			System.out.println(antalDagePaaLager);
-			System.out.println(d.getMaxToerreTid());
-			//Hvis denne delbehandlings max tørretid er større end max tørretid.
-			if(d.getMaxToerreTid() >= max && d.getMaxToerreTid() <= antalDagePaaLager){
-				resultMellemvare = m;
-				
-			}else if(d.getIdealToerreTid() >= ideal && d.getIdealToerreTid() <= antalDagePaaLager){
-				resultMellemvare = m;
-				
-			}else if(d.getMinToerreTid() >= min && d.getMinToerreTid() <= antalDagePaaLager){
-				resultMellemvare = m;
+			//Udregner hvor mange dage den givne mellemvare har vaeret på lageret i DEN delbehandling
+			//Udregner hvor mange dage den givne mellemvare har vaeret på lageret i DEN delbehandling
+			if(d != null){
+				int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
+				if(d.getMaxToerreTid() >= max && d.getMaxToerreTid() <= antalDagePaaLager){
+					resultMellemvare = m;
+					max = d.getMaxToerreTid();
+				}else if(d.getIdealToerreTid() >= ideal && d.getIdealToerreTid() <= antalDagePaaLager){
+					resultMellemvare = m;
+					ideal = d.getIdealToerreTid();
+				}else if(d.getMinToerreTid() >= min && d.getMinToerreTid() <= antalDagePaaLager){
+					resultMellemvare = m;
+					min = d.getMinToerreTid();
+				}
+			}else{
+				isFaerdig = true;
 			}
 		}
+		if(resultMellemvare != null && isFaerdig){
+			flytTilFaerdigvare(resultMellemvare);
+		}
 		
+		if(resultMellemvare != null){
+			resultMellemvare.createToerretid(dage);
+		}
 		return resultMellemvare;
 	}	
+
+	
+	private void flytTilFaerdigvare(Mellemvare m){
+		mellemvarer.remove(m);
+		faerdigeMellemvarer.add(m);
+	}
 	
 	public ArrayList<Mellemvare> getMellemvarer() {
 		return new ArrayList<Mellemvare>(mellemvarer);

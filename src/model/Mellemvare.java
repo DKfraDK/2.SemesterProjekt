@@ -9,9 +9,10 @@ public class Mellemvare {
 	private Produkttype produkttype =null;
 	private List<Toerretid> toerretider = new ArrayList<Toerretid>();
 	
-	public Mellemvare(String id, Produkttype produkttype){
+	public Mellemvare(String id, Produkttype produkttype, int tid){
 		this.produkttype=produkttype;
 		this.setId(id);
+		createToerretid(tid);
 	}
 	public Produkttype getProdukttype(){
 		return produkttype;
@@ -41,7 +42,6 @@ public class Mellemvare {
 		int antalDelbehandlinger = getProdukttype().getBehandling().getDelbehandlinger().size();
 		int antalToerretider = toerretider.size();
 		Delbehandling delbehandling = null;
-		//Checker om den givne mellemvare er klar til næste delbehandling
 		if( antalDelbehandlinger >= antalToerretider + 1){
 			delbehandling = getProdukttype().getBehandling().getDelbehandlinger().get(antalToerretider);
 		}
