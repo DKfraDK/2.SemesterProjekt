@@ -41,6 +41,7 @@ public class Mellemvare {
 		int antalDelbehandlinger = getProdukttype().getBehandling().getDelbehandlinger().size();
 		int antalToerretider = toerretider.size();
 		Delbehandling delbehandling = null;
+		//Checker om den givne mellemvare er klar til næste delbehandling
 		if( antalDelbehandlinger >= antalToerretider + 1){
 			delbehandling = getProdukttype().getBehandling().getDelbehandlinger().get(antalToerretider);
 		}
