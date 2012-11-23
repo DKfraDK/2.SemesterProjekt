@@ -8,7 +8,7 @@ public class Behandling {
 	private String navn;
 	private List<Delbehandling> delbehandlinger = new ArrayList<Delbehandling>();
 	public Behandling(String navn) {
-		this.navn = navn;
+		this.setNavn(navn);
 
 	}
 
@@ -35,6 +35,14 @@ public class Behandling {
 	
 	public ArrayList<Delbehandling> getDelbehandlinger(){
 		return new ArrayList<Delbehandling>(delbehandlinger);
+	}
+
+	public String getNavn() {
+		return navn;
+	}
+
+	public void setNavn(String navn) {
+		this.navn = navn;
 	}
 
 }
