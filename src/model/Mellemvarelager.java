@@ -21,17 +21,26 @@ public class Mellemvarelager {
 		ArrayList<Mellemvare> mellemvarerTilToerring = new ArrayList<Mellemvare>();
 		for(Mellemvare m: mellemvarer){
 			if(m.getStatus().equals(Status.TILTOERRING)){
-				mellemvarerTilToerring.add(m);
+				if(m.getNaesteDelbehandling().getIdealToerreTid()<=getDageSidenForrigeDelbehandling(m)
+					&& m.getNaesteDelbehandling().getMaxToerreTid()>=getDageSidenForrigeDelbehandling(m)){
+					
+					
+					mellemvarerTilToerring.add(m);
+				}
+				
+				
 			}
-			
 		}
+			
 		return mellemvarerTilToerring;
 	}
 	
 	public ArrayList<Mellemvare> getFaerdigeMellemvarer(){
 		return new ArrayList<Mellemvare>(faerdigeMellemvarer);
 	}
-	
+	public int getDageSidenForrigeDelbehandling(Mellemvare m){
+		return dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
+	}
 	public Mellemvare getNaesteMellemvareTilBehandling(){
 		Mellemvare resultMellemvare = null;
 		int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
@@ -41,7 +50,7 @@ public class Mellemvarelager {
 		for(Mellemvare m : mellemvarer){
 			Delbehandling d = m.getNaesteDelbehandling();
 			if(d != null){
-				int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
+				int antalDagePaaLager = getDageSidenForrigeDelbehandling(m);
 				if(d.getMaxToerreTid() >= max && d.getMaxToerreTid() <= antalDagePaaLager){
 					resultMellemvare = m;
 					max = d.getMaxToerreTid();
