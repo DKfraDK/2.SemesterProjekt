@@ -19,7 +19,6 @@ public class Mellemvarelager {
 	
 	public ArrayList<Mellemvare> getOversigt(){
 		ArrayList<Mellemvare> mellemvarerTilToerring = new ArrayList<Mellemvare>();
-		int i=0;
 		for(Mellemvare m: mellemvarer){
 			if(m.getStatus().equals(Status.TILTOERRING)){
 				mellemvarerTilToerring.add(m);

@@ -8,7 +8,7 @@ public class ProdukttypePane extends JPanel {
 	 * Create the panel.
 	 */
 	public ProdukttypePane() {
-
+		
 	}
 
 }
