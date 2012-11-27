@@ -67,7 +67,6 @@ public class BehandlingPane extends JPanel {
 				behandling_list.setListData(Service.getBehandling().toArray());
 			}else if(e.getSource() == opretBehandling_btn){
 				new OpretBehandlingDialog(behandling_list);
-				behandling_list.setListData(Service.getBehandling().toArray());
 			}
 		}
 
@@ -77,7 +76,6 @@ public class BehandlingPane extends JPanel {
 			info_txtArea.setText("");
 			for(Delbehandling d : currentSelectedBehandling.getDelbehandlinger()){
 				info_txtArea.setText(info_txtArea.getText() + d + "\n");
-
 			}
 		}
 

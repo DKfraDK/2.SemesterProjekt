@@ -36,6 +36,7 @@ public class MellemvareLagerGUI extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.addTab("Lagerstyring", new LagerStyringPane());
 		tabbedPane.addTab("Mellemvarer", new MellemvarePane());
 		tabbedPane.addTab("Produkttyper", new ProdukttypePane());
 		tabbedPane.addTab("Behandlinger", new BehandlingPane());

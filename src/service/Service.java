@@ -9,16 +9,19 @@ import model.Mellemvarelager;
 import model.Produkttype;
 
 public class Service {
-
+	
 	public static void nyDag(Mellemvarelager lager) {
 		int nyDag = lager.getDage() + 1;
 		lager.setDage(nyDag);
 	}
 
+	public static int getDag(Mellemvarelager l){
+		return l.getDage();
+	}
+	
 	public static void createSomeObjects() {
-
-		Mellemvarelager lager = new Mellemvarelager(
-				"lager 1 (fem dage gammelt)");
+		Mellemvarelager lager = new Mellemvarelager("lager 1");
+		Dao.addMellemvarelager(lager);
 		lager.setDage(5);
 
 		Delbehandling dSkum = createDelbehandling("Skum", 1, 2, 5);
@@ -155,5 +158,9 @@ public class Service {
 
 	public static ArrayList<Delbehandling> getDelbehandlinger() {
 		return new ArrayList<Delbehandling>(Dao.getDelbehandling());
+	}
+	
+	public static ArrayList<Mellemvarelager> getMellemvarelagerer(){
+		return new ArrayList<Mellemvarelager>(Dao.getMellemvarelagere());
 	}
 }

@@ -20,6 +20,10 @@ public class Dao {
 	public static ArrayList<Mellemvarelager> getMellemvarelagere() {
 		return mellemvarelagere;
 	}
+	
+	public static void addMellemvarelager(Mellemvarelager ml){
+		mellemvarelagere.add(ml);
+	}
 
 	public static ArrayList<Mellemvare> getMellemvarer() {
 		return new ArrayList<Mellemvare>(mellemvarer);
