@@ -13,7 +13,7 @@ public class Mellemvare {
 		this.produkttype=produkttype;
 		this.setId(id);
 		createToerretid(tid);
-		status=Status.TILTOERRING;
+		setStatus(Status.TILTOERRING);
 	}
 	public Produkttype getProdukttype(){
 		return produkttype;
@@ -61,5 +61,11 @@ public class Mellemvare {
 	
 	public String toString(){
 		return "id: " + id + ", " + getProdukttype();
+	}
+	public Status getStatus() {
+		return status;
+	}
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 }

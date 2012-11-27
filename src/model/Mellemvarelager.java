@@ -10,9 +10,23 @@ public class Mellemvarelager {
 	private String navn;
 	private int dage = 0;
 
+	
+	
 	public Mellemvarelager(String navn) {
 		this.navn = navn;
 
+	}
+	
+	public ArrayList<Mellemvare> getOversigt(){
+		ArrayList<Mellemvare> mellemvarerTilToerring = new ArrayList<Mellemvare>();
+		int i=0;
+		for(Mellemvare m: mellemvarer){
+			if(m.getStatus().equals(Status.TILTOERRING)){
+				mellemvarerTilToerring.add(m);
+			}
+			
+		}
+		return mellemvarerTilToerring;
 	}
 	
 	public ArrayList<Mellemvare> getFaerdigeMellemvarer(){
