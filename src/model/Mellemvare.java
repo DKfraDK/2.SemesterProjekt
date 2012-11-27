@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mellemvare {
-
+	private Status status = Status.TILTØRRING;
 	private String id;
 	private Produkttype produkttype =null;
 	private List<Toerretid> toerretider = new ArrayList<Toerretid>();
