@@ -9,21 +9,24 @@ import model.Mellemvarelager;
 import model.Produkttype;
 
 public class Service {
-	public static void nyDag(Mellemvarelager lager) {
-		int nyDag = lager.getDage()+1;
-		lager.setDage(nyDag);
-		}
-		public static void createSomeObjects() {
 
-		Mellemvarelager lager = new Mellemvarelager("lager 1 (fem dage gammelt)");
+	public static void nyDag(Mellemvarelager lager) {
+		int nyDag = lager.getDage() + 1;
+		lager.setDage(nyDag);
+	}
+
+	public static void createSomeObjects() {
+
+		Mellemvarelager lager = new Mellemvarelager(
+				"lager 1 (fem dage gammelt)");
 		lager.setDage(5);
 
 		Delbehandling dSkum = createDelbehandling("Skum", 1, 2, 5);
 		Delbehandling dChoko = createDelbehandling("ChokoladeOvertraek", 2, 3,
-		4);
+				4);
 		Delbehandling dDragee = createDelbehandling("Drageering", 3, 4, 12);
 		Delbehandling dChokoYderst = createDelbehandling(
-		"ChokoladeOvertraek yderst", 2, 3, 5);
+				"ChokoladeOvertraek yderst", 2, 3, 5);
 		Delbehandling dHvile = createDelbehandling("Hvile periode", 1, 2, 8);
 		Behandling bChokoSkum = createBehandling("Chokolade Skum");
 		addDelbehandlingTilBehandling(bChokoSkum, dSkum);
@@ -44,10 +47,10 @@ public class Service {
 		Produkttype pPTaerter = createProdukttype("PTaerter", bChokoSkum);
 		Produkttype pLakridsPinde = createProdukttype("LakridsPinde", bLakrids);
 		Produkttype pChokoladeLakrids = createProdukttype(
-		"ChokoladeOvertrukketLakrids", bChokoLakrids);
+				"ChokoladeOvertrukketLakrids", bChokoLakrids);
 		Mellemvare m1 = createMellemvare("Vare1", pSkumBanan, 1);
 		Mellemvare m2 = createMellemvare("Vare2", pSkumBanan, 1);
-		Mellemvare m3 = createMellemvare("Vare3",pSkumBanan, 2);
+		Mellemvare m3 = createMellemvare("Vare3", pSkumBanan, 2);
 
 		Mellemvare m4 = createMellemvare("Vare4", pPTaerter, 1);
 		Mellemvare m5 = createMellemvare("vare5", pPTaerter, 2);
@@ -56,7 +59,7 @@ public class Service {
 
 		Mellemvare m7 = createMellemvare("vare7", pChokoladeLakrids, 3);
 
-		}
+	}
 
 	public static Mellemvare createMellemvare(String id,
 			Produkttype produkttype, int tid) {

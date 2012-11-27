@@ -1,13 +1,13 @@
 package gui;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
 
 import service.Service;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
 
 public class MellemvarePane extends JPanel {
 
@@ -19,6 +19,7 @@ public class MellemvarePane extends JPanel {
 		
 		JList mellemvare_list = new JList();
 		mellemvare_list.setBounds(6, 6, 200, 288);
+		mellemvare_list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		mellemvare_list.setListData(Service.getMellemvarer().toArray());
 		add(mellemvare_list);
 		
@@ -36,7 +37,7 @@ public class MellemvarePane extends JPanel {
 		add(info_txtArea);
 		
 		JLabel infoOmValgt_lbl = new JLabel("Info om valgt mellemvare");
-		infoOmValgt_lbl.setBounds(252, 74, 160, 16);
+		infoOmValgt_lbl.setBounds(233, 74, 160, 16);
 		add(infoOmValgt_lbl);
 		
 	}

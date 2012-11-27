@@ -60,7 +60,7 @@ public class Mellemvare {
 	}
 	
 	public String toString(){
-		return "id: " + id + ", " + getProdukttype();
+		return id;
 	}
 	public Status getStatus() {
 		return status;

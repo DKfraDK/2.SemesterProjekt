@@ -10,6 +10,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 
+import service.Service;
+
 public class MellemvareLagerGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -18,6 +20,7 @@ public class MellemvareLagerGUI extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		Service.createSomeObjects();
 		new MellemvareLagerGUI();
 	}
 
