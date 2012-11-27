@@ -34,16 +34,12 @@ public class Mellemvarelager {
 	
 	public Mellemvare getNaesteMellemvareTilBehandling(){
 		Mellemvare resultMellemvare = null;
-		//Den maximum tørretid for den sidste delbehandling af den første mellemvare
 		int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
 		int min = mellemvarer.get(0).getSidsteDelbehandling().getMinToerreTid();
 		int ideal = mellemvarer.get(0).getSidsteDelbehandling().getIdealToerreTid();
 		boolean isFaerdig = false;
 		for(Mellemvare m : mellemvarer){
 			Delbehandling d = m.getNaesteDelbehandling();
-			//Udregner hvor mange dage den givne mellemvare har vaeret på lageret i DEN delbehandling
-			//Udregner hvor mange dage den givne mellemvare har vaeret på lageret i DEN delbehandling
-			//Udregner hvor mange dage den givne mellemvare har vaeret på lageret i DEN delbehandling
 			if(d != null){
 				int antalDagePaaLager = dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
 				if(d.getMaxToerreTid() >= max && d.getMaxToerreTid() <= antalDagePaaLager){
