@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -108,12 +109,16 @@ public class OpretBehandlingDialog extends JDialog {
 				valgteDelbehandlinger.remove(currentSelectedDelbehandlingFraValgteDelbehandlinger);
 				valgteDelbehandlinger_list.setListData(valgteDelbehandlinger.toArray());
 			}else if(e.getSource() == ok_btn){
-				Behandling b = Service.createBehandling(navn_txt.getText());
-				for(Delbehandling d : valgteDelbehandlinger){
-					Service.addDelbehandlingTilBehandling(b, d);
+				if(navn_txt.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "Indtast navn", "Fejl", JOptionPane.ERROR_MESSAGE);
+				}else{
+					Behandling b = Service.createBehandling(navn_txt.getText());
+					for(Delbehandling d : valgteDelbehandlinger){
+						Service.addDelbehandlingTilBehandling(b, d);
+					}
+					behandling_list.setListData(Service.getBehandling().toArray());
+					dispose();
 				}
-				behandling_list.setListData(Service.getBehandling().toArray());
-				dispose();
 			}else if(e.getSource() == cancel_btn){
 				dispose();
 			}
