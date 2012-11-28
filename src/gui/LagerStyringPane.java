@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import service.Service;
@@ -58,6 +59,10 @@ public class LagerStyringPane extends JPanel {
 			if(e.getSource() == nsteDag_btn){
 				Service.nyDag();
 				nuvaerendeDag_lbl.setText("" + Service.getDag());
+			}else if(e.getSource() == kritiskeMellemvarer_btn){
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getOversigtOverKritiskeMellemvarer(), "Kritiske mellemvarer", JOptionPane.PLAIN_MESSAGE);
+			}else if(e.getSource() == nsteMellemvareTilBehandling_btn){
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getNaesteMellemvareTilBehandling(), "N¾ste mellemvare til behandling", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 	}

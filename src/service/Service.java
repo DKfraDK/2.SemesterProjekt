@@ -159,7 +159,7 @@ public class Service {
 		return new ArrayList<Delbehandling>(Dao.getDelbehandling());
 	}
 	
-	public static Mellemvarelager getMellemvarelagerer(){
+	public static Mellemvarelager getMellemvarelager(){
 		return Dao.getMellemvarelager();
 	}
 }

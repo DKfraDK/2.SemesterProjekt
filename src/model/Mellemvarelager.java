@@ -23,7 +23,7 @@ public class Mellemvarelager {
 		return uniqueInstance;
 	}
 
-	public ArrayList<Mellemvare> getOversigt() {
+	public ArrayList<Mellemvare> getOversigtOverKritiskeMellemvarer() {
 		ArrayList<Mellemvare> mellemvarerTilToerring = new ArrayList<Mellemvare>();
 		for (Mellemvare m : mellemvarer) {
 			if (m.getStatus().equals(Status.TILTOERRING)) {
