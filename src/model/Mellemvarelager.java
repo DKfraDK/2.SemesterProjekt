@@ -150,5 +150,9 @@ public class Mellemvarelager {
 		}
 		return resultList;
 	}
+	
+	public void clearLager(){
+		mellemvarer.clear();
+	}
 
 }
