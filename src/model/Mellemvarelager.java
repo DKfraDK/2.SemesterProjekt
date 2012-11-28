@@ -25,17 +25,17 @@ public class Mellemvarelager {
 	}
 
 	public ArrayList<Mellemvare> getOversigtOverKritiskeMellemvarer() {
-		ArrayList<Mellemvare> mellemvarerTilToerring = new ArrayList<Mellemvare>();
+		ArrayList<Mellemvare> kritiskeMellemvarer = new ArrayList<Mellemvare>();
 		for (Mellemvare m : mellemvarer) {
 			if (m.getStatus().equals(Status.TILTOERRING)) {
 				if (m.getNaesteDelbehandling().getIdealToerreTid() <= getDageSidenForrigeDelbehandling(m)
 						&& m.getNaesteDelbehandling().getMaxToerreTid() >= getDageSidenForrigeDelbehandling(m)) {
-					mellemvarerTilToerring.add(m);
+					kritiskeMellemvarer.add(m);
 				}
 			}
 		}
 
-		return mellemvarerTilToerring;
+		return kritiskeMellemvarer;
 	}
 
 	public ArrayList<Mellemvare> getFaerdigeMellemvarer() {
@@ -46,6 +46,36 @@ public class Mellemvarelager {
 		return dage
 				- m.getToerretider().get(m.getToerretider().size() - 1)
 						.getTid();
+	}
+	
+	private int getStoersteMinToerretid(){
+		int result = 0;
+		for(Mellemvare m : mellemvarer){
+			if(m.getSidsteDelbehandling().getMinToerreTid() >= result){
+				result = m.getSidsteDelbehandling().getMinToerreTid();
+			}
+		}
+		return result;
+	}
+	
+	private int getStoersteIdealToerretid(){
+		int result = 0;
+		for(Mellemvare m : mellemvarer){
+			if(m.getSidsteDelbehandling().getIdealToerreTid() >= result){
+				result = m.getSidsteDelbehandling().getIdealToerreTid();
+			}
+		}
+		return result;
+	}
+	
+	private int getStoersteMaxToerretid(){
+		int result = 0;
+		for(Mellemvare m : mellemvarer){
+			if(m.getSidsteDelbehandling().getMaxToerreTid() >= result){
+				result = m.getSidsteDelbehandling().getMaxToerreTid();
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -60,10 +90,13 @@ public class Mellemvarelager {
 
 	public Mellemvare getNaesteMellemvareTilBehandling() {
 		Mellemvare resultMellemvare = null;
-		int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
-		int min = mellemvarer.get(0).getSidsteDelbehandling().getMinToerreTid();
-		int ideal = mellemvarer.get(0).getSidsteDelbehandling()
-				.getIdealToerreTid();
+		//int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
+		//int min = mellemvarer.get(0).getSidsteDelbehandling().getMinToerreTid();
+		//int ideal = mellemvarer.get(0).getSidsteDelbehandling().getIdealToerreTid();
+
+		int min = getStoersteMinToerretid();
+		int ideal = getStoersteIdealToerretid();
+		int max = getStoersteMaxToerretid();
 		boolean isFaerdig = false;
 		for (Mellemvare m : mellemvarer) {
 			Delbehandling d = m.getNaesteDelbehandling();
