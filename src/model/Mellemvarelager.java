@@ -11,84 +11,88 @@ public class Mellemvarelager {
 	private String navn;
 	private int dage = 0;
 
-	
-	
 	private Mellemvarelager(String navn) {
 		this.navn = navn;
 
 	}
-	public static Mellemvarelager getInstance(String newnavn){
-		if(uniqueInstance==null){
+
+	public static Mellemvarelager getInstance(String newnavn) {
+		if (uniqueInstance == null) {
 			uniqueInstance = new Mellemvarelager(newnavn);
 		}
 		return uniqueInstance;
 	}
-	
-	public ArrayList<Mellemvare> getOversigt(){
+
+	public ArrayList<Mellemvare> getOversigt() {
 		ArrayList<Mellemvare> mellemvarerTilToerring = new ArrayList<Mellemvare>();
-		for(Mellemvare m: mellemvarer){
-			if(m.getStatus().equals(Status.TILTOERRING)){
-				if(m.getNaesteDelbehandling().getIdealToerreTid()<=getDageSidenForrigeDelbehandling(m)
-					&& m.getNaesteDelbehandling().getMaxToerreTid()>=getDageSidenForrigeDelbehandling(m)){
-					
-					
+		for (Mellemvare m : mellemvarer) {
+			if (m.getStatus().equals(Status.TILTOERRING)) {
+				if (m.getNaesteDelbehandling().getIdealToerreTid() <= getDageSidenForrigeDelbehandling(m)
+						&& m.getNaesteDelbehandling().getMaxToerreTid() >= getDageSidenForrigeDelbehandling(m)) {
+
 					mellemvarerTilToerring.add(m);
 				}
-				
-				
+
 			}
 		}
-			
+
 		return mellemvarerTilToerring;
 	}
-	
-	public ArrayList<Mellemvare> getFaerdigeMellemvarer(){
+
+	public ArrayList<Mellemvare> getFaerdigeMellemvarer() {
 		return new ArrayList<Mellemvare>(faerdigeMellemvarer);
 	}
-	public int getDageSidenForrigeDelbehandling(Mellemvare m){
-		return dage - m.getToerretider().get(m.getToerretider().size()-1).getTid();
+
+	public int getDageSidenForrigeDelbehandling(Mellemvare m) {
+		return dage
+				- m.getToerretider().get(m.getToerretider().size() - 1)
+						.getTid();
 	}
-	public Mellemvare getNaesteMellemvareTilBehandling(){
+
+	public Mellemvare getNaesteMellemvareTilBehandling() {
 		Mellemvare resultMellemvare = null;
 		int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
 		int min = mellemvarer.get(0).getSidsteDelbehandling().getMinToerreTid();
-		int ideal = mellemvarer.get(0).getSidsteDelbehandling().getIdealToerreTid();
+		int ideal = mellemvarer.get(0).getSidsteDelbehandling()
+				.getIdealToerreTid();
 		boolean isFaerdig = false;
-		for(Mellemvare m : mellemvarer){
+		for (Mellemvare m : mellemvarer) {
 			Delbehandling d = m.getNaesteDelbehandling();
-			if(d != null){
+			if (d != null) {
 				int antalDagePaaLager = getDageSidenForrigeDelbehandling(m);
-				if(d.getMaxToerreTid() >= max && d.getMaxToerreTid() <= antalDagePaaLager){
+				if (d.getMaxToerreTid() >= max
+						&& d.getMaxToerreTid() <= antalDagePaaLager) {
 					resultMellemvare = m;
 					max = d.getMaxToerreTid();
-				}else if(d.getIdealToerreTid() >= ideal && d.getIdealToerreTid() <= antalDagePaaLager){
+				} else if (d.getIdealToerreTid() >= ideal
+						&& d.getIdealToerreTid() <= antalDagePaaLager) {
 					resultMellemvare = m;
 					ideal = d.getIdealToerreTid();
-				}else if(d.getMinToerreTid() >= min && d.getMinToerreTid() <= antalDagePaaLager){
+				} else if (d.getMinToerreTid() >= min
+						&& d.getMinToerreTid() <= antalDagePaaLager) {
 					resultMellemvare = m;
 					min = d.getMinToerreTid();
 				}
-			}else{
+			} else {
 				isFaerdig = true;
-				resultMellemvare=m;
+				resultMellemvare = m;
 			}
 		}
-		if(resultMellemvare != null && isFaerdig){
+		if (resultMellemvare != null && isFaerdig) {
 			flytTilFaerdigvare(resultMellemvare);
 		}
-		
-		else if(resultMellemvare != null){
+
+		else if (resultMellemvare != null) {
 			resultMellemvare.createToerretid(dage);
 		}
 		return resultMellemvare;
-	}	
+	}
 
-	
-	private void flytTilFaerdigvare(Mellemvare m){
+	private void flytTilFaerdigvare(Mellemvare m) {
 		mellemvarer.remove(m);
 		faerdigeMellemvarer.add(m);
 	}
-	
+
 	public ArrayList<Mellemvare> getMellemvarer() {
 		return new ArrayList<Mellemvare>(mellemvarer);
 	}
@@ -113,7 +117,7 @@ public class Mellemvarelager {
 		return placeringer.indexOf(m);
 
 	}
-	
+
 	public int getDage() {
 		return dage;
 	}
