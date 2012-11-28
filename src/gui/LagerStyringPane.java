@@ -46,7 +46,7 @@ public class LagerStyringPane extends JPanel {
 		add(dag_lbl);
 		
 		nuvaerendeDag_lbl = new JLabel("0");
-		nuvaerendeDag_lbl.setText("" + Service.getDag(Service.getMellemvarelagerer().get(0)));
+		nuvaerendeDag_lbl.setText("" + Service.getDag());
 		nuvaerendeDag_lbl.setBounds(158, 10, 190, 16);
 		add(nuvaerendeDag_lbl);
 	}
@@ -56,8 +56,8 @@ public class LagerStyringPane extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == nsteDag_btn){
-				Service.nyDag(Service.getMellemvarelagerer().get(0));
-				nuvaerendeDag_lbl.setText("" + Service.getDag(Service.getMellemvarelagerer().get(0)));
+				Service.nyDag();
+				nuvaerendeDag_lbl.setText("" + Service.getDag());
 			}
 		}
 	}

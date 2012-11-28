@@ -10,19 +10,15 @@ import model.Produkttype;
 import model.Toerretid;
 
 public class Dao {
-	private static ArrayList<Mellemvarelager> mellemvarelagere = new ArrayList<Mellemvarelager>();
+	private static Mellemvarelager mellemvarelager = Mellemvarelager.getInstance("Lager1");
 	private static ArrayList<Mellemvare> mellemvarer = new ArrayList<Mellemvare>();
 	private static ArrayList<Behandling> behandlinger = new ArrayList<Behandling>();
 	private static ArrayList<Delbehandling> delbehandlinger = new ArrayList<Delbehandling>();
 	private static ArrayList<Toerretid> toerretider = new ArrayList<Toerretid>();
 	private static ArrayList<Produkttype> produkttyper = new ArrayList<Produkttype>();
 
-	public static ArrayList<Mellemvarelager> getMellemvarelagere() {
-		return mellemvarelagere;
-	}
-	
-	public static void addMellemvarelager(Mellemvarelager ml){
-		mellemvarelagere.add(ml);
+	public static Mellemvarelager getMellemvarelager() {
+		return mellemvarelager;
 	}
 
 	public static ArrayList<Mellemvare> getMellemvarer() {
