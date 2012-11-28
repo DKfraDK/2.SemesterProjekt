@@ -29,7 +29,7 @@ public class MellemvareLagerGUI extends JFrame {
 	 */
 	public MellemvareLagerGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 600, 390);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -40,6 +40,7 @@ public class MellemvareLagerGUI extends JFrame {
 		tabbedPane.addTab("Mellemvarer", new MellemvarePane());
 		tabbedPane.addTab("Produkttyper", new ProdukttypePane());
 		tabbedPane.addTab("Behandlinger", new BehandlingPane());
+		tabbedPane.addTab("Delbehandlinger", new DelbehandlingPane());
 		
 		contentPane.add(tabbedPane);
 		

@@ -97,8 +97,19 @@ public class Service {
 		produkttype.setNavn(navn);
 	}
 
-	public static void deleteProdukttype(Produkttype produkttype) {
-		Dao.removeProdukttype(produkttype);
+	public static boolean deleteProdukttype(Produkttype produkttype) {
+		boolean found = false;
+		for(Mellemvare m : Dao.getMellemvarelager().getMellemvarer()){
+			if(m.getProdukttype().equals(produkttype)){
+				found = true;
+			}
+		}
+		if(!found){
+			Dao.removeProdukttype(produkttype);
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public static Behandling createBehandling(String navn) {
@@ -118,8 +129,19 @@ public class Service {
 		behandling.addDelbehandling(delbehandling);
 	}
 
-	public static void deleteBehandling(Behandling behandling) {
-		Dao.removeBehandling(behandling);
+	public static boolean deleteBehandling(Behandling behandling) {
+		boolean found = false;
+		for(Mellemvare m : Dao.getMellemvarelager().getMellemvarer()){
+			if(m.getProdukttype().getBehandling().equals(behandling)){
+				found = true;
+			}
+		}
+		if(!found){
+			Dao.removeBehandling(behandling);
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	public static Delbehandling createDelbehandling(String navn, int min,
@@ -139,8 +161,21 @@ public class Service {
 		delbehandling.setMaxToerreTid(max);
 	}
 
-	public static void deleteDelBehandling(Delbehandling delbehandling) {
-		Dao.removeDelbehandling(delbehandling);
+	public static boolean deleteDelBehandling(Delbehandling delbehandling) {
+		boolean found = false;
+		for(Mellemvare m : Dao.getMellemvarelager().getMellemvarer()){
+			for(Delbehandling d : m.getProdukttype().getBehandling().getDelbehandlinger()){
+				if(d.equals(delbehandling)){
+					found = true;
+				}
+			}
+		}
+		if(!found){
+			Dao.removeDelbehandling(delbehandling);
+			return true;
+		}else{
+			return false;
+		}	
 	}
 
 	public static ArrayList<Mellemvare> getMellemvarer() {

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
@@ -70,8 +71,11 @@ public class ProdukttypePane extends JPanel {
 			if(e.getSource() == opretProdukttype_btn){
 				new OpretProdukttypeDialog(produkttype_list);
 			}else if(e.getSource() == fjernProdukttype_btn){
-				Service.deleteProdukttype(currentSelectedProdukttype);
-				produkttype_list.setListData(Service.getProdukttyper().toArray());
+				if(Service.deleteProdukttype(currentSelectedProdukttype)){
+					produkttype_list.setListData(Service.getProdukttyper().toArray());
+				}else{
+					JOptionPane.showMessageDialog(null, "Produkttypen du fors¿ger at fjerne er tilknyttet til en mellemvare", "Fejl", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		}
 		

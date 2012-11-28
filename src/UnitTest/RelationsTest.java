@@ -29,7 +29,6 @@ public class RelationsTest {
 		Produkttype p1 = new Produkttype("pSkumBanan",b1);
 		Mellemvarelager m = Mellemvarelager.getInstance("Mellemvare");
 		Mellemvare mv = new Mellemvare("007",p1,0);
-		
 		m.addMellemvare(mv);
 		assertTrue(m.getMellemvarer().contains(mv));
 		

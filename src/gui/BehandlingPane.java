@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
@@ -63,8 +64,11 @@ public class BehandlingPane extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == fjernBehandling_btn){
-				Service.deleteBehandling(currentSelectedBehandling);
-				behandling_list.setListData(Service.getBehandling().toArray());
+				if(Service.deleteBehandling(currentSelectedBehandling)){
+					behandling_list.setListData(Service.getBehandling().toArray());
+				}else{
+					JOptionPane.showMessageDialog(null, "Behandlingen du fors¿ger at fjerne er tilknyttet til en produkttype", "Fejl", JOptionPane.ERROR_MESSAGE);
+				}
 			}else if(e.getSource() == opretBehandling_btn){
 				new OpretBehandlingDialog(behandling_list);
 			}
