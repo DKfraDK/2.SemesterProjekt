@@ -38,11 +38,9 @@ public class Service {
 		Behandling bLakrids = createBehandling("Lakrids knas");
 		addDelbehandlingTilBehandling(bLakrids, dHvile);
 		addDelbehandlingTilBehandling(bLakrids, dDragee);
-		addDelbehandlingTilBehandling(bLakrids, dDragee);
 		Behandling bChokoLakrids = createBehandling("Chokalde Lakrids");
 		addDelbehandlingTilBehandling(bChokoLakrids, dChoko);
 		addDelbehandlingTilBehandling(bChokoLakrids, dDragee);
-		addDelbehandlingTilBehandling(bChokoSkum, dChoko);
 		addDelbehandlingTilBehandling(bChokoLakrids, dHvile);
 		addDelbehandlingTilBehandling(bChokoLakrids, dChokoYderst);
 		Produkttype pSkumBanan = createProdukttype("SkumBanan", bChokoSkum);
@@ -68,8 +66,8 @@ public class Service {
 	public static Mellemvare createMellemvare(String id,
 			Produkttype produkttype, int tid) {
 		Mellemvare mellemvare = new Mellemvare(id, produkttype, tid);
-		if (!Dao.getMellemvarer().contains(mellemvare)) {
-			Dao.addMellemvare(mellemvare);
+		if (!Mellemvarelager.getInstance("lager 1").getMellemvarer().contains(mellemvare)) {
+			Mellemvarelager.getInstance("lager 1").addMellemvare(mellemvare);
 		}
 		return mellemvare;
 	}
@@ -81,7 +79,7 @@ public class Service {
 	}
 
 	public static void deleteMellemvare(Mellemvare mellemvare) {
-		Dao.removeMellemvare(mellemvare);
+		Mellemvarelager.getInstance("lager 1").removeMellemvare(mellemvare);
 	}
 
 	public static Produkttype createProdukttype(String navn,
@@ -146,7 +144,7 @@ public class Service {
 	}
 
 	public static ArrayList<Mellemvare> getMellemvarer() {
-		return new ArrayList<Mellemvare>(Dao.getMellemvarer());
+		return new ArrayList<Mellemvare>(Mellemvarelager.getInstance("lager 1").getMellemvarer());
 	}
 
 	public static ArrayList<Produkttype> getProdukttyper() {

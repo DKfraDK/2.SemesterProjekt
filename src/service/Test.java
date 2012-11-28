@@ -36,9 +36,9 @@ public class Test {
 		Mellemvarelager ml1 = Mellemvarelager.getInstance("Lager of d00m");
 		ml1.setDage(2);
 		
-		ml1.addMellemvare(m2);		
+		ml1.addMellemvare(m1);		
+		ml1.addMellemvare(m2);
 		ml1.addMellemvare(m3);
-		ml1.addMellemvare(m1);
 		
 		System.out.println("Alle mellemvarer: " + ml1.getMellemvarer());
 		System.out.println("N¾ste mellemvare til behandling: " + ml1.getNaesteMellemvareTilBehandling());
