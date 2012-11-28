@@ -20,7 +20,7 @@ public class Service {
 	}
 	
 	public static void createSomeObjects() {
-		Mellemvarelager lager = new Mellemvarelager("lager 1");
+		Mellemvarelager lager = Mellemvarelager.getInstance("lager 1");
 		Dao.addMellemvarelager(lager);
 		lager.setDage(5);
 

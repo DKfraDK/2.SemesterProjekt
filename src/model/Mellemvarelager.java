@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mellemvarelager {
+	private static Mellemvarelager uniqueInstance;
 	private List<String> placeringer = new ArrayList<String>();
 	private ArrayList<Mellemvare> mellemvarer = new ArrayList<Mellemvare>();
 	private ArrayList<Mellemvare> faerdigeMellemvarer = new ArrayList<Mellemvare>();
@@ -12,9 +13,15 @@ public class Mellemvarelager {
 
 	
 	
-	public Mellemvarelager(String navn) {
+	private Mellemvarelager(String navn) {
 		this.navn = navn;
 
+	}
+	public static Mellemvarelager getInstance(String newnavn){
+		if(uniqueInstance==null){
+			uniqueInstance = new Mellemvarelager(newnavn);
+		}
+		return uniqueInstance;
 	}
 	
 	public ArrayList<Mellemvare> getOversigt(){
@@ -63,13 +70,14 @@ public class Mellemvarelager {
 				}
 			}else{
 				isFaerdig = true;
+				resultMellemvare=m;
 			}
 		}
 		if(resultMellemvare != null && isFaerdig){
 			flytTilFaerdigvare(resultMellemvare);
 		}
 		
-		if(resultMellemvare != null){
+		else if(resultMellemvare != null){
 			resultMellemvare.createToerretid(dage);
 		}
 		return resultMellemvare;

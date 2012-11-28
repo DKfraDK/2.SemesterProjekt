@@ -33,7 +33,7 @@ public class Test {
 		Mellemvare m1 = new Mellemvare("001",p1, 0);
 		Mellemvare m2 = new Mellemvare("002",p2, 0);
 		Mellemvare m3 = new Mellemvare("003",p3, 0);
-		Mellemvarelager ml1 = new Mellemvarelager("Lager of d00m");
+		Mellemvarelager ml1 = Mellemvarelager.getInstance("Lager of d00m");
 		ml1.setDage(2);
 		
 		ml1.addMellemvare(m2);		
