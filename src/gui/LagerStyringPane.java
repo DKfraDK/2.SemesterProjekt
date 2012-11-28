@@ -60,9 +60,11 @@ public class LagerStyringPane extends JPanel {
 				Service.nyDag();
 				nuvaerendeDag_lbl.setText("" + Service.getDag());
 			}else if(e.getSource() == kritiskeMellemvarer_btn){
-				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getOversigtOverKritiskeMellemvarer(), "Kritiske mellemvarer", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getOversigtOverKritiskeMellemvarer().toArray(), "Kritiske mellemvarer", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == nsteMellemvareTilBehandling_btn){
 				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getNaesteMellemvareTilBehandling(), "N¾ste mellemvare til behandling", JOptionPane.PLAIN_MESSAGE);
+			}else if(e.getSource() == forGamleMellemvarer_btn){
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getForGamleMellemvarer().toArray(), "For gamle mellemvarer", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 	}

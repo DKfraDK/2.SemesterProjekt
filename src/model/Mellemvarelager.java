@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import service.Service;
+
 public class Mellemvarelager {
 	private static Mellemvarelager uniqueInstance;
 	private List<String> placeringer = new ArrayList<String>();
@@ -13,7 +15,6 @@ public class Mellemvarelager {
 
 	private Mellemvarelager(String navn) {
 		this.navn = navn;
-
 	}
 
 	public static Mellemvarelager getInstance(String newnavn) {
@@ -134,6 +135,20 @@ public class Mellemvarelager {
 
 	public void setDage(int dage) {
 		this.dage = dage;
+	}
+
+	public void updateLagerBeholdning() {
+		mellemvarer = Service.getMellemvarer();
+	}
+
+	public ArrayList<Mellemvare> getForGamleMellemvarer() {
+		ArrayList<Mellemvare> resultList = new ArrayList<Mellemvare>();
+		for(Mellemvare m : mellemvarer){
+			if(m.getSidsteDelbehandling().getMaxToerreTid() < getDageSidenForrigeDelbehandling(m)){
+				resultList.add(m);
+			}
+		}
+		return resultList;
 	}
 
 }

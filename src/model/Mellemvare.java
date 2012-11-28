@@ -70,7 +70,7 @@ public class Mellemvare {
 	 * @return den sidste delbehandling
 	 */
 	public Delbehandling getSidsteDelbehandling(){
-		 return getProdukttype().getBehandling().getDelbehandlinger().get(toerretider.size()-1);
+		return getProdukttype().getBehandling().getDelbehandlinger().get(toerretider.size()-1);
 	}
 	
 	public String toString(){

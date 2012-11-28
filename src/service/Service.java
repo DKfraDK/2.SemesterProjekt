@@ -21,7 +21,7 @@ public class Service {
 	
 	public static void createSomeObjects() {
 		Mellemvarelager lager = Mellemvarelager.getInstance("lager 1");
-		lager.setDage(5);
+		lager.setDage(2);
 
 		Delbehandling dSkum = createDelbehandling("Skum", 1, 2, 5);
 		Delbehandling dChoko = createDelbehandling("ChokoladeOvertraek", 2, 3,
@@ -60,6 +60,8 @@ public class Service {
 		Mellemvare m6 = createMellemvare("vare6", pLakridsPinde, 4);
 
 		Mellemvare m7 = createMellemvare("vare7", pChokoladeLakrids, 3);
+		
+		Service.getMellemvarelager().updateLagerBeholdning();
 
 	}
 
