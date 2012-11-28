@@ -29,10 +29,8 @@ public class Mellemvarelager {
 			if (m.getStatus().equals(Status.TILTOERRING)) {
 				if (m.getNaesteDelbehandling().getIdealToerreTid() <= getDageSidenForrigeDelbehandling(m)
 						&& m.getNaesteDelbehandling().getMaxToerreTid() >= getDageSidenForrigeDelbehandling(m)) {
-
 					mellemvarerTilToerring.add(m);
 				}
-
 			}
 		}
 
@@ -48,6 +46,16 @@ public class Mellemvarelager {
 				- m.getToerretider().get(m.getToerretider().size() - 1)
 						.getTid();
 	}
+
+	/**
+	 * Finder næste mellemvare til videre behandling fortager en vægtet
+	 * udvælgese på baggrund af mellemvarens "alder" dvs. at en vare der er
+	 * tættere på dens max tid for prioritet, for at minimere tab
+	 * 
+	 * @return Mellemvare note, hvis der ikke er flere behandlinger for
+	 *         mellemvare bliver den automatisk tilføjet til færdigvare listen
+	 * 
+	 * */
 
 	public Mellemvare getNaesteMellemvareTilBehandling() {
 		Mellemvare resultMellemvare = null;
@@ -88,6 +96,12 @@ public class Mellemvarelager {
 		return resultMellemvare;
 	}
 
+	/**
+	 * støtte metode til at flytte en mellemvare til færdigvare
+	 * 
+	 * @param m
+	 *            den mellemvarse man ønsker at flytte
+	 */
 	private void flytTilFaerdigvare(Mellemvare m) {
 		mellemvarer.remove(m);
 		faerdigeMellemvarer.add(m);
@@ -107,10 +121,6 @@ public class Mellemvarelager {
 		if (mellemvarer.contains(mellemvare)) {
 			mellemvarer.remove(mellemvare);
 		}
-	}
-
-	public void sendTilFaerdiglager(Mellemvare v) {
-
 	}
 
 	public int getPlacering(Mellemvare m) {
