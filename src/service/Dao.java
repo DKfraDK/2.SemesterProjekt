@@ -25,7 +25,7 @@ public class Dao {
 		return new ArrayList<Behandling>(behandlinger);
 	}
 
-	public static ArrayList<Delbehandling> getDelbehandling() {
+	public static ArrayList<Delbehandling> getDelbehandlinger() {
 		return new ArrayList<Delbehandling>(delbehandlinger);
 	}
 

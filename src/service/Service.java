@@ -131,8 +131,8 @@ public class Service {
 
 	public static boolean deleteBehandling(Behandling behandling) {
 		boolean found = false;
-		for(Mellemvare m : Dao.getMellemvarelager().getMellemvarer()){
-			if(m.getProdukttype().getBehandling().equals(behandling)){
+		for(Produkttype p : Dao.getProdukttyper()){
+			if(p.getBehandling().equals(behandling)){
 				found = true;
 			}
 		}
@@ -147,7 +147,7 @@ public class Service {
 	public static Delbehandling createDelbehandling(String navn, int min,
 			int ideal, int max) {
 		Delbehandling delbehandling = new Delbehandling(navn, min, ideal, max);
-		if (!Dao.getDelbehandling().contains(delbehandling)) {
+		if (!Dao.getDelbehandlinger().contains(delbehandling)) {
 			Dao.addDelbehandling(delbehandling);
 		}
 		return delbehandling;
@@ -163,8 +163,8 @@ public class Service {
 
 	public static boolean deleteDelBehandling(Delbehandling delbehandling) {
 		boolean found = false;
-		for(Mellemvare m : Dao.getMellemvarelager().getMellemvarer()){
-			for(Delbehandling d : m.getProdukttype().getBehandling().getDelbehandlinger()){
+		for(Behandling b : Dao.getBehandlinger()){
+			for(Delbehandling d : b.getDelbehandlinger()){
 				if(d.equals(delbehandling)){
 					found = true;
 				}
@@ -191,7 +191,7 @@ public class Service {
 	}
 
 	public static ArrayList<Delbehandling> getDelbehandlinger() {
-		return new ArrayList<Delbehandling>(Dao.getDelbehandling());
+		return new ArrayList<Delbehandling>(Dao.getDelbehandlinger());
 	}
 	
 	public static Mellemvarelager getMellemvarelager(){
