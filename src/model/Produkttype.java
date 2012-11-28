@@ -16,7 +16,7 @@ public class Produkttype {
 	public Behandling getBehandling(){
 		return behandling;
 	}
-	//SetBehandling er irrelevant 
+	
 	public void setBehandling(Behandling behandling){
 		if(this.behandling!=behandling){
 			this.behandling=behandling;

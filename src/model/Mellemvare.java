@@ -18,7 +18,7 @@ public class Mellemvare {
 	public Produkttype getProdukttype(){
 		return produkttype;
 	}
-	//setProdukttype(Produkttype produkttype) er irrelevant
+	
 	public void setProdukttype(Produkttype produkttype){
 		if(this.produkttype!=produkttype){
 			this.produkttype=produkttype;
@@ -27,6 +27,13 @@ public class Mellemvare {
 	public ArrayList<Toerretid> getToerretider(){
 		return new ArrayList<Toerretid>(toerretider);
 	}
+	
+	/**
+	 * 
+	 * @param tid den dag tørretiden  blev oprettet. Dvs den dag mellemvaren for sin delbehandling
+	 * @return tørretiden selv
+	 * @throws RuntimeException kaster en exception hvis der ikke findes flere delbehandlinger på mellemvaren
+	 */
 	public Toerretid createToerretid(int tid) throws RuntimeException{
 		Delbehandling delbehandling = getNaesteDelbehandling();
 		if (delbehandling == null) throw new RuntimeException("ikke flere delbehandlinger");
@@ -39,6 +46,10 @@ public class Mellemvare {
 			toerretider.remove(toerretid);
 		}
 	}
+	/**
+	 * finder den næsten delbehandling for mellemvaren ved at gå til behandling over produkttype.
+	 * @return retunere den næste delbehandling for mellemvarens tilknyttede behandling.
+	 */
 	public Delbehandling getNaesteDelbehandling(){
 		int antalDelbehandlinger = getProdukttype().getBehandling().getDelbehandlinger().size();
 		int antalToerretider = toerretider.size();
@@ -54,9 +65,12 @@ public class Mellemvare {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+	/**
+	 * hjælpe metode der findes den sidste "aktuelle" delbehandling
+	 * @return den sidste delbehandling
+	 */
 	public Delbehandling getSidsteDelbehandling(){
-		 return getProdukttype().getBehandling().getDelbehandlinger().get(getProdukttype().getBehandling().getDelbehandlinger().size()-1);
+		 return getProdukttype().getBehandling().getDelbehandlinger().get(toerretider.size()-1);
 	}
 	
 	public String toString(){
