@@ -13,7 +13,7 @@ import service.Service;
 public class LagerStyringPane extends JPanel {
 
 	private Controller controller = new Controller();
-	private JButton nsteDag_btn, kritiskeMellemvarer_btn, nsteMellemvareTilBehandling_btn, forGamleMellemvarer_btn;
+	private JButton nsteDag_btn, kritiskeMellemvarer_btn, nsteMellemvareTilBehandling_btn, forGamleMellemvarer_btn, faerdigeMellemvarer_btn;
 	private JLabel nuvaerendeDag_lbl;
 	
 	/**
@@ -42,6 +42,11 @@ public class LagerStyringPane extends JPanel {
 		add(forGamleMellemvarer_btn);
 		forGamleMellemvarer_btn.addActionListener(controller);
 		
+		faerdigeMellemvarer_btn = new JButton("F¾rdige varer");
+		faerdigeMellemvarer_btn.setBounds(97, 202, 251, 29);
+		add(faerdigeMellemvarer_btn);
+		faerdigeMellemvarer_btn.addActionListener(controller);
+		
 		JLabel dag_lbl = new JLabel("Dag:");
 		dag_lbl.setBounds(112, 10, 61, 16);
 		add(dag_lbl);
@@ -65,6 +70,8 @@ public class LagerStyringPane extends JPanel {
 				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getNaesteMellemvareTilBehandling(), "N¾ste mellemvare til behandling", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == forGamleMellemvarer_btn){
 				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getForGamleMellemvarer().toArray(), "For gamle mellemvarer", JOptionPane.PLAIN_MESSAGE);
+			}else if(e.getSource() == faerdigeMellemvarer_btn){
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getFaerdigeMellemvarer().toArray(), "F¾rdige varer", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 	}

@@ -34,9 +34,8 @@ public class Mellemvare {
 	 * @return tørretiden selv
 	 * @throws RuntimeException kaster en exception hvis der ikke findes flere delbehandlinger på mellemvaren
 	 */
-	public Toerretid createToerretid(int tid) throws RuntimeException{
+	public Toerretid createToerretid(int tid){
 		Delbehandling delbehandling = getNaesteDelbehandling();
-		if (delbehandling == null) throw new RuntimeException("ikke flere delbehandlinger");
 		Toerretid toerretid = new Toerretid(tid, delbehandling);
 		toerretider.add(toerretid);
 		return toerretid;
@@ -59,6 +58,7 @@ public class Mellemvare {
 		}
 		return delbehandling;
 	}
+	
 	public String getId() {
 		return id;
 	}

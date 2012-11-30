@@ -28,8 +28,8 @@ public class Mellemvarelager {
 		ArrayList<Mellemvare> kritiskeMellemvarer = new ArrayList<Mellemvare>();
 		for (Mellemvare m : mellemvarer) {
 			if (m.getStatus().equals(Status.TILTOERRING)) {
-				if (m.getNaesteDelbehandling().getIdealToerreTid() <= getDageSidenForrigeDelbehandling(m)
-						&& m.getNaesteDelbehandling().getMaxToerreTid() >= getDageSidenForrigeDelbehandling(m)) {
+				if (m.getNaesteDelbehandling().getIdealToerreTid() <= getDageTilToerreSidenSidsteDelbehandling(m)
+						&& m.getNaesteDelbehandling().getMaxToerreTid() >= getDageTilToerreSidenSidsteDelbehandling(m)) {
 					kritiskeMellemvarer.add(m);
 				}
 			}
@@ -42,42 +42,11 @@ public class Mellemvarelager {
 		return new ArrayList<Mellemvare>(faerdigeMellemvarer);
 	}
 
-	public int getDageSidenForrigeDelbehandling(Mellemvare m) {
-		return dage
-				- m.getToerretider().get(m.getToerretider().size() - 1)
-						.getTid();
-	}
-	
-	private int getStoersteMinToerretid(){
-		int result = 0;
-		for(Mellemvare m : mellemvarer){
-			if(m.getSidsteDelbehandling().getMinToerreTid() >= result){
-				result = m.getSidsteDelbehandling().getMinToerreTid();
-			}
-		}
-		return result;
-	}
-	
-	private int getStoersteIdealToerretid(){
-		int result = 0;
-		for(Mellemvare m : mellemvarer){
-			if(m.getSidsteDelbehandling().getIdealToerreTid() >= result){
-				result = m.getSidsteDelbehandling().getIdealToerreTid();
-			}
-		}
-		return result;
-	}
-	
-	private int getStoersteMaxToerretid(){
-		int result = 0;
-		for(Mellemvare m : mellemvarer){
-			if(m.getSidsteDelbehandling().getMaxToerreTid() >= result){
-				result = m.getSidsteDelbehandling().getMaxToerreTid();
-			}
-		}
-		return result;
+	public int getDageTilToerreSidenSidsteDelbehandling(Mellemvare m) {
+		return dage - m.getToerretider().get(m.getToerretider().size() - 1).getTid();
 	}
 
+	
 	/**
 	 * Finder næste mellemvare til videre behandling fortager en vægtet
 	 * udvælgese på baggrund af mellemvarens "alder" dvs. at en vare der er
@@ -88,46 +57,116 @@ public class Mellemvarelager {
 	 * 
 	 * */
 
-	public Mellemvare getNaesteMellemvareTilBehandling() {
+//	public Mellemvare getNaesteMellemvareTilBehandling() {
+//		Mellemvare resultMellemvare = null;
+//		//int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
+//		//int min = mellemvarer.get(0).getSidsteDelbehandling().getMinToerreTid();
+//		//int ideal = mellemvarer.get(0).getSidsteDelbehandling().getIdealToerreTid();
+//
+//		int min = getStoersteMinToerretid();
+//		int ideal = getStoersteIdealToerretid();
+//		int max = getStoersteMaxToerretid();
+//		boolean isFaerdig = false;
+//		for (Mellemvare m : mellemvarer) {
+//			Delbehandling d = m.getNaesteDelbehandling();
+//			if (d != null) {
+//				int antalDagePaaLager = getDageSidenForrigeDelbehandling(m);
+//				if (d.getMaxToerreTid() >= max
+//						&& d.getMaxToerreTid() <= antalDagePaaLager) {
+//					resultMellemvare = m;
+//					max = d.getMaxToerreTid();
+//				} else if (d.getIdealToerreTid() >= ideal
+//						&& d.getIdealToerreTid() <= antalDagePaaLager) {
+//					resultMellemvare = m;
+//					ideal = d.getIdealToerreTid();
+//				} else if (d.getMinToerreTid() >= min
+//						&& d.getMinToerreTid() <= antalDagePaaLager) {
+//					resultMellemvare = m;
+//					min = d.getMinToerreTid();
+//				}
+//			} else {
+//				isFaerdig = true;
+//				resultMellemvare = m;
+//			}
+//		}
+//		if (resultMellemvare != null && isFaerdig) {
+//			flytTilFaerdigvare(resultMellemvare);
+//		}
+//
+//		else if (resultMellemvare != null) {
+//			resultMellemvare.createToerretid(dage);
+//		}
+//		return resultMellemvare;
+//	}
+	/**
+	 * @return N¾ste mellemvare klar til behandling prioriteret efter mellemvarens delbehandlingers min, ideal og max t¿rretider.
+	 * @return Null hvis der ikke findes en mellemvare der er klar til en ny behandling.
+	 */
+	public Mellemvare getNaesteMellemvareTilBehandling(){
 		Mellemvare resultMellemvare = null;
-		//int max = mellemvarer.get(0).getSidsteDelbehandling().getMaxToerreTid();
-		//int min = mellemvarer.get(0).getSidsteDelbehandling().getMinToerreTid();
-		//int ideal = mellemvarer.get(0).getSidsteDelbehandling().getIdealToerreTid();
-
-		int min = getStoersteMinToerretid();
-		int ideal = getStoersteIdealToerretid();
-		int max = getStoersteMaxToerretid();
-		boolean isFaerdig = false;
-		for (Mellemvare m : mellemvarer) {
-			Delbehandling d = m.getNaesteDelbehandling();
-			if (d != null) {
-				int antalDagePaaLager = getDageSidenForrigeDelbehandling(m);
-				if (d.getMaxToerreTid() >= max
-						&& d.getMaxToerreTid() <= antalDagePaaLager) {
-					resultMellemvare = m;
-					max = d.getMaxToerreTid();
-				} else if (d.getIdealToerreTid() >= ideal
-						&& d.getIdealToerreTid() <= antalDagePaaLager) {
-					resultMellemvare = m;
-					ideal = d.getIdealToerreTid();
-				} else if (d.getMinToerreTid() >= min
-						&& d.getMinToerreTid() <= antalDagePaaLager) {
-					resultMellemvare = m;
-					min = d.getMinToerreTid();
-				}
-			} else {
-				isFaerdig = true;
+		int max = 0;
+		for(Mellemvare m : getMellemvarerMedMaxToerretid()){
+			if(m.getSidsteDelbehandling().getMaxToerreTid() > max){
+				max = m.getSidsteDelbehandling().getMaxToerreTid();
 				resultMellemvare = m;
 			}
 		}
-		if (resultMellemvare != null && isFaerdig) {
-			flytTilFaerdigvare(resultMellemvare);
+		int ideal = 0;
+		if(resultMellemvare == null){ //Hvis der ikke er nogen mellemvarer med max t¿rretid
+			for(Mellemvare m : getMellemvarerMedIdealToerretid()){
+				if(m.getSidsteDelbehandling().getIdealToerreTid() > ideal){
+					ideal = m.getSidsteDelbehandling().getIdealToerreTid();
+					resultMellemvare = m;
+				}
+			}
 		}
-
-		else if (resultMellemvare != null) {
+		int min = 0;
+		if(resultMellemvare == null){ //Hvis der ikke er nogen mellemvarer med ideal t¿rretid
+			for(Mellemvare m : getMellemvarerMedMinToerretid()){
+				if(m.getSidsteDelbehandling().getMinToerreTid() > min){
+					min = m.getSidsteDelbehandling().getMinToerreTid();
+					resultMellemvare = m;
+				}
+			}
+		}
+		if(resultMellemvare != null && resultMellemvare.getNaesteDelbehandling() == null){ //Mellemvaren har v¾ret igennem alle delbehandlinger
+			flytTilFaerdigvare(resultMellemvare);
+		}else if(resultMellemvare != null){ //Mellemvaren har flere delbehandlinger og den er nu igang med at t¿rre igen
 			resultMellemvare.createToerretid(dage);
 		}
 		return resultMellemvare;
+	}
+	
+	private ArrayList<Mellemvare> getMellemvarerMedMaxToerretid(){
+		ArrayList<Mellemvare> resultList = new ArrayList<Mellemvare>();
+		for(Mellemvare m : mellemvarer){
+			if(m.getSidsteDelbehandling().getMaxToerreTid() == getDageTilToerreSidenSidsteDelbehandling(m)){
+				resultList.add(m);
+			}
+		}
+		return resultList;
+	}
+	
+	private ArrayList<Mellemvare> getMellemvarerMedIdealToerretid(){
+		ArrayList<Mellemvare> resultList = new ArrayList<Mellemvare>();
+		for(Mellemvare m : mellemvarer){
+			if(m.getSidsteDelbehandling().getIdealToerreTid() <= getDageTilToerreSidenSidsteDelbehandling(m)
+					&& m.getSidsteDelbehandling().getMaxToerreTid() > getDageTilToerreSidenSidsteDelbehandling(m)){
+				resultList.add(m);
+			}
+		}
+		return resultList;
+	}
+	
+	private ArrayList<Mellemvare> getMellemvarerMedMinToerretid(){
+		ArrayList<Mellemvare> resultList = new ArrayList<Mellemvare>();
+		for(Mellemvare m : mellemvarer){
+			if(m.getSidsteDelbehandling().getMinToerreTid() <= getDageTilToerreSidenSidsteDelbehandling(m)
+					&& m.getSidsteDelbehandling().getIdealToerreTid() > getDageTilToerreSidenSidsteDelbehandling(m)){
+				resultList.add(m);
+			}
+		}
+		return resultList;
 	}
 
 	/**
@@ -177,7 +216,7 @@ public class Mellemvarelager {
 	public ArrayList<Mellemvare> getForGamleMellemvarer() {
 		ArrayList<Mellemvare> resultList = new ArrayList<Mellemvare>();
 		for(Mellemvare m : mellemvarer){
-			if(m.getSidsteDelbehandling().getMaxToerreTid() < getDageSidenForrigeDelbehandling(m)){
+			if(m.getSidsteDelbehandling().getMaxToerreTid() < getDageTilToerreSidenSidsteDelbehandling(m)){
 				resultList.add(m);
 			}
 		}
