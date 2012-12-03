@@ -125,7 +125,7 @@ public class RelationsTest {
 		Service.addDelbehandlingTilBehandling(b1, dHvile2);
 		Produkttype p1 = new Produkttype("pSkumBanan",b1);
 		Mellemvare mv = new Mellemvare("007",p1,0);
-		Toerretid t = mv.createToerretid(0);
+	
 		
 		
 		assertTrue(dHvile2.equals(mv.getNaesteDelbehandling()));

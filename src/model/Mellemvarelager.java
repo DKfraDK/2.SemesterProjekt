@@ -98,6 +98,7 @@ public class Mellemvarelager {
 //		}
 //		return resultMellemvare;
 //	}
+	
 	/**
 	 * @return N¾ste mellemvare klar til behandling prioriteret efter mellemvarens delbehandlingers min, ideal og max t¿rretider.
 	 * @return Null hvis der ikke findes en mellemvare der er klar til en ny behandling.
@@ -178,6 +179,7 @@ public class Mellemvarelager {
 	private void flytTilFaerdigvare(Mellemvare m) {
 		mellemvarer.remove(m);
 		faerdigeMellemvarer.add(m);
+		m.setStatus(Status.FAERDIG);
 	}
 
 	public ArrayList<Mellemvare> getMellemvarer() {

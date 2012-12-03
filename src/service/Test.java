@@ -34,6 +34,7 @@ public class Test {
 		Mellemvare m2 = new Mellemvare("002",p2, 0);
 		Mellemvare m3 = new Mellemvare("003",p3, 0);
 		Mellemvarelager ml1 = Mellemvarelager.getInstance("Lager of d00m");
+		
 		ml1.setDage(2);
 		
 		ml1.addMellemvare(m1);		
@@ -57,6 +58,9 @@ public class Test {
 		System.out.println("Alle mellemvarer: " + ml1.getMellemvarer());
 		
 		System.out.println("F¾rdige mellemvarer: " + ml1.getFaerdigeMellemvarer());
+		
+		
+		
 	}
 
 }
