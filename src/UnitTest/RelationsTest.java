@@ -15,11 +15,7 @@ import service.Service;
 
 public class RelationsTest {
 
-	@Test
-	public void test() {
-		//fail("Not yet implemented");
-		System.out.println("ekstra test");
-	}
+
 	////////////////////TEST I MELLEMVARELAGER//////////////////////
 	@Test
 	public void testAddMellemvare(){
