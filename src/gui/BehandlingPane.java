@@ -52,7 +52,7 @@ public class BehandlingPane extends JPanel {
 		info_txtArea.setBounds(218, 102, 226, 192);
 		add(info_txtArea);
 		
-		JLabel infoOmValgt_lbl = new JLabel("Info om valgt behandling");
+		JLabel infoOmValgt_lbl = new JLabel("Liste over Delbehandlinger");
 		infoOmValgt_lbl.setBounds(239, 74, 177, 16);
 		add(infoOmValgt_lbl);
 
@@ -67,7 +67,7 @@ public class BehandlingPane extends JPanel {
 				if(Service.deleteBehandling(currentSelectedBehandling)){
 					behandling_list.setListData(Service.getBehandling().toArray());
 				}else{
-					JOptionPane.showMessageDialog(null, "Behandlingen du fors¿ger at fjerne er tilknyttet til en produkttype", "Fejl", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Behandlingen du forsoeger at fjerne er tilknyttet til en produkttype", "Fejl", JOptionPane.ERROR_MESSAGE);
 				}
 			}else if(e.getSource() == opretBehandling_btn){
 				new OpretBehandlingDialog(behandling_list);

@@ -64,7 +64,7 @@ public class DelbehandlingPane extends JPanel {
 				if(Service.deleteDelBehandling(currentSelectedDelbehandling)){
 					delbehandling_list.setListData(Service.getDelbehandlinger().toArray());
 				}else{
-					JOptionPane.showMessageDialog(null, "Delbehandlingen du fors¿ger at fjerne er tilknyttet til en behandling", "Fejl", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Delbehandlingen du forsoeger at fjerne er tilknyttet til en behandling", "Fejl", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}

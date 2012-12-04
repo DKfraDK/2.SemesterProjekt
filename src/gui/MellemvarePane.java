@@ -50,7 +50,7 @@ public class MellemvarePane extends JPanel {
 		info_txtArea.setBounds(218, 102, 226, 192);
 		add(info_txtArea);
 		
-		JLabel infoOmValgt_lbl = new JLabel("Info om valgt mellemvare");
+		JLabel infoOmValgt_lbl = new JLabel("Produkttype, Behandling:");
 		infoOmValgt_lbl.setBounds(233, 74, 160, 16);
 		add(infoOmValgt_lbl);
 		
