@@ -42,7 +42,7 @@ public class LagerStyringPane extends JPanel {
 		add(forGamleMellemvarer_btn);
 		forGamleMellemvarer_btn.addActionListener(controller);
 		
-		faerdigeMellemvarer_btn = new JButton("F¾rdige varer");
+		faerdigeMellemvarer_btn = new JButton("Faerdige varer");
 		faerdigeMellemvarer_btn.setBounds(97, 202, 251, 29);
 		add(faerdigeMellemvarer_btn);
 		faerdigeMellemvarer_btn.addActionListener(controller);
