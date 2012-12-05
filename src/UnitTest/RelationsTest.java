@@ -164,7 +164,7 @@ public class RelationsTest {
 	// //////////////////TEST I MELLEMVARELAGER//////////////////////
 	// ////////////GetNæsteMellemvareTilDelbehandling//////
 	@Test
-	public void testFørMax() {
+	public void testForMax() {
 		Delbehandling dHvile1 = new Delbehandling("Hvile periode1", 1, 2, 6);
 		Delbehandling dHvile2 = new Delbehandling("Hvile periode2", 1, 2, 4);
 		Delbehandling dHvile3 = new Delbehandling("Hvile periode3", 1, 2, 3);
@@ -270,7 +270,7 @@ public class RelationsTest {
 		// //////////////////TEST I MELLEMVARELAGER//////////////////////
 		// ////////////GetNæsteMellemvareTilDelbehandling//////
 		@Test
-		public void testFørklar() {
+		public void testForklar() {
 			Delbehandling dHvile1 = new Delbehandling("Hvile periode1", 4, 6, 8);
 			Delbehandling dHvile2 = new Delbehandling("Hvile periode2", 4, 6, 8);
 			Delbehandling dHvile3 = new Delbehandling("Hvile periode3", 4, 6, 8);
