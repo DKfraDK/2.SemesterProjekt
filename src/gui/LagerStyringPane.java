@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -72,11 +73,11 @@ public class LagerStyringPane extends JPanel {
 			}else if(e.getSource() == kritiskeMellemvarer_btn){
 				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getOversigtOverKritiskeMellemvarer().toArray(), "Kritiske mellemvarer", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == nsteMellemvareTilBehandling_btn){
-				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getNaesteMellemvareTilBehandling(), "N¾ste mellemvare til behandling", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getNaesteMellemvareTilBehandling(), "Naeste mellemvare til behandling", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == forGamleMellemvarer_btn){
 				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getForGamleMellemvarer().toArray(), "For gamle mellemvarer", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == faerdigeMellemvarer_btn){
-				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getFaerdigeMellemvarer().toArray(), "F¾rdige varer", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getFaerdigeMellemvarer().toArray(), "Faerdige varer", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == statistikForGamleMellemvarer_btn){
 				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getStatistikOverForGamleMellemvarer(), "Statistik over for gamle mellemvarer", JOptionPane.PLAIN_MESSAGE);
 			}
