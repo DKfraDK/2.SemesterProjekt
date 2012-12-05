@@ -103,6 +103,7 @@ public class Mellemvarelager {
 	/**
 	 * @return N¾ste mellemvare klar til behandling prioriteret efter mellemvarens delbehandlingers min, ideal og max t¿rretider.
 	 * @return Null hvis der ikke findes en mellemvare der er klar til en ny behandling.
+	 * @return i tilfælde af lighed retuners første forkomst
 	 */
 	public Mellemvare getNaesteMellemvareTilBehandling(){
 		Mellemvare resultMellemvare = null;
