@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,7 +14,7 @@ import service.Service;
 public class LagerStyringPane extends JPanel {
 
 	private Controller controller = new Controller();
-	private JButton nsteDag_btn, kritiskeMellemvarer_btn, nsteMellemvareTilBehandling_btn, forGamleMellemvarer_btn, faerdigeMellemvarer_btn;
+	private JButton statistikForGamleMellemvarer_btn, nsteDag_btn, kritiskeMellemvarer_btn, nsteMellemvareTilBehandling_btn, forGamleMellemvarer_btn, faerdigeMellemvarer_btn;
 	private JLabel nuvaerendeDag_lbl;
 	
 	/**
@@ -42,10 +43,15 @@ public class LagerStyringPane extends JPanel {
 		add(forGamleMellemvarer_btn);
 		forGamleMellemvarer_btn.addActionListener(controller);
 		
-		faerdigeMellemvarer_btn = new JButton("F¾rdige varer");
+		faerdigeMellemvarer_btn = new JButton("Faerdige varer");
 		faerdigeMellemvarer_btn.setBounds(97, 202, 251, 29);
 		add(faerdigeMellemvarer_btn);
 		faerdigeMellemvarer_btn.addActionListener(controller);
+		
+		statistikForGamleMellemvarer_btn = new JButton("Statistik over gamle mellemvarer");
+		statistikForGamleMellemvarer_btn.setBounds(97, 243, 251, 29);
+		add(statistikForGamleMellemvarer_btn);
+		statistikForGamleMellemvarer_btn.addActionListener(controller);
 		
 		JLabel dag_lbl = new JLabel("Dag:");
 		dag_lbl.setBounds(112, 10, 61, 16);
@@ -67,11 +73,13 @@ public class LagerStyringPane extends JPanel {
 			}else if(e.getSource() == kritiskeMellemvarer_btn){
 				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getOversigtOverKritiskeMellemvarer().toArray(), "Kritiske mellemvarer", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == nsteMellemvareTilBehandling_btn){
-				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getNaesteMellemvareTilBehandling(), "N¾ste mellemvare til behandling", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getNaesteMellemvareTilBehandling(), "Naeste mellemvare til behandling", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == forGamleMellemvarer_btn){
 				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getForGamleMellemvarer().toArray(), "For gamle mellemvarer", JOptionPane.PLAIN_MESSAGE);
 			}else if(e.getSource() == faerdigeMellemvarer_btn){
-				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getFaerdigeMellemvarer().toArray(), "F¾rdige varer", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getFaerdigeMellemvarer().toArray(), "Faerdige varer", JOptionPane.PLAIN_MESSAGE);
+			}else if(e.getSource() == statistikForGamleMellemvarer_btn){
+				JOptionPane.showMessageDialog(null, Service.getMellemvarelager().getStatistikOverForGamleMellemvarer(), "Statistik over for gamle mellemvarer", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 	}

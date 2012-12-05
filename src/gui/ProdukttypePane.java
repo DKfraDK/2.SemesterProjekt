@@ -51,7 +51,7 @@ public class ProdukttypePane extends JPanel {
 		info_txtArea.setBounds(218, 102, 226, 192);
 		add(info_txtArea);
 		
-		JLabel infoOmValgt_lbl = new JLabel("Info om valgt produkttype");
+		JLabel infoOmValgt_lbl = new JLabel("Tilknyttet behandling:");
 		infoOmValgt_lbl.setBounds(239, 74, 177, 16);
 		add(infoOmValgt_lbl);
 	}
@@ -74,7 +74,7 @@ public class ProdukttypePane extends JPanel {
 				if(Service.deleteProdukttype(currentSelectedProdukttype)){
 					produkttype_list.setListData(Service.getProdukttyper().toArray());
 				}else{
-					JOptionPane.showMessageDialog(null, "Produkttypen du fors¿ger at fjerne er tilknyttet til en mellemvare", "Fejl", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Produkttypen du forsoeger at fjerne er tilknyttet til en mellemvare", "Fejl", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		}

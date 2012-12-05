@@ -10,6 +10,7 @@ public class Mellemvarelager {
 	private List<String> placeringer = new ArrayList<String>();
 	private ArrayList<Mellemvare> mellemvarer = new ArrayList<Mellemvare>();
 	private ArrayList<Mellemvare> faerdigeMellemvarer = new ArrayList<Mellemvare>();
+	private ArrayList<Mellemvare> forGamleMellemvare = new ArrayList<Mellemvare>();
 	private String navn;
 	private int dage = 0;
 
@@ -229,5 +230,17 @@ public class Mellemvarelager {
 	public void clearLager(){
 		mellemvarer.clear();
 	}
+
+	public ArrayList<Mellemvare> getForGamleMellemvareList() {
+		return new ArrayList<Mellemvare>(forGamleMellemvare);
+	}
+	
+	public void setForGamleMellemvareList(ArrayList<Mellemvare> nyList){
+		forGamleMellemvare = nyList;
+	}
+
+public int getStatistikOverForGamleMellemvarer(){
+	return forGamleMellemvare.size();
+}
 
 }
