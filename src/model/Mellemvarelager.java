@@ -239,8 +239,8 @@ public class Mellemvarelager {
 		forGamleMellemvare = nyList;
 	}
 
-public int getStatistikOverForGamleMellemvarer(){
-	return forGamleMellemvare.size();
-}
+	public int getStatistikOverForGamleMellemvarer(){
+		return forGamleMellemvare.size();
+	}
 
 }

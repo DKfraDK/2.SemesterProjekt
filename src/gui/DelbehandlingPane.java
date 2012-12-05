@@ -50,7 +50,7 @@ public class DelbehandlingPane extends JPanel {
 		info_txtArea.setBounds(218, 102, 226, 192);
 		add(info_txtArea);
 		
-		JLabel infoOmValgt_lbl = new JLabel("Info om valgt behandling");
+		JLabel infoOmValgt_lbl = new JLabel("Info om valgt delbehandling");
 		infoOmValgt_lbl.setBounds(239, 74, 177, 16);
 		add(infoOmValgt_lbl);
 		
